@@ -31,8 +31,11 @@ void loop() {
   value = digitalRead(smokeA0);
 
   if (!value) {
+//  Open the relay connected to AC
     digitalWrite(relayPin, HIGH);
-
+    
+//  Sound the alarm, trigger relay to SIREN
+//  Whenever smoke is detected, sound the alarm then wait check the temperature
     while(true) {
       float temp = dht.readTemperature();
       Serial.println(temp);
@@ -43,10 +46,9 @@ void loop() {
       }
 //      if button is pressed
 //        reset arduino      
-
-      delay(100);
-      
+      delay(100);  
     }
+    
     delay(200);
   }
 
